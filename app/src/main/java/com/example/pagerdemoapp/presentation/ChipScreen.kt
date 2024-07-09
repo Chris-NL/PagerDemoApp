@@ -53,17 +53,15 @@ fun ChipScreen(
     modifier: Modifier,
     //focusRequester: FocusRequester
 ) {
-    val focusRequester = remember { FocusRequester() }
+    //val focusRequester = remember { FocusRequester() }
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+        //focusRequester.requestFocus()
     }
 
     var scalingLazyColumnModifier = modifier
         .fillMaxSize()
-        .focusRequester(focusRequester)
-        .focusable()
 
     if (LocalConfiguration.current.isScreenRound)
         scalingLazyColumnModifier = scalingLazyColumnModifier.then(Modifier.clip(CircleShape))
@@ -77,8 +75,8 @@ fun ChipScreen(
                 }
                 true
             }*/
-            .focusRequester(focusRequester)
-            .focusable()
+            //.focusRequester(focusRequester)
+            //.focusable()
     )
 
     ScalingLazyColumn(

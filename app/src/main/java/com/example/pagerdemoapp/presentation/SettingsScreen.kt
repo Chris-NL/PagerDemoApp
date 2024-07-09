@@ -52,11 +52,11 @@ fun SettingsScreen(
     var setting6 by remember { mutableStateOf(true) }
     var setting7 by remember { mutableStateOf(true) }
 
-    val focusRequester = remember { FocusRequester() }
+    //val focusRequester = remember { FocusRequester() }
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+        //focusRequester.requestFocus()
     }
 
     var scalingLazyColumnModifier = modifier
@@ -74,8 +74,8 @@ fun SettingsScreen(
                 }
                 true
             }*/
-            .focusRequester(focusRequester)
-            .focusable()
+            //.focusRequester(focusRequester)
+            //.focusable()
     )
 
     ScalingLazyColumn(

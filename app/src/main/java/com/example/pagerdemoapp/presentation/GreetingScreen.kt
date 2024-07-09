@@ -72,7 +72,7 @@ fun GreetingScreen(
     greetingScreenVisible: MutableState<Boolean>,
     onScreenNavigated: (route: String?, navOptions: NavOptions?) -> Unit = { _: String?, _: NavOptions? -> }
 ) {
-    val focusRequester = remember { FocusRequester() }
+    //val focusRequester = remember { FocusRequester() }
     val coroutineScope = rememberCoroutineScope()
     val screenHeight = (LocalConfiguration.current.screenHeightDp.toFloat() * LocalDensity.current.density)
 
@@ -183,7 +183,7 @@ fun GreetingScreen(
         ActionDrawer(
             scalingLazyListState = scalingLazyListState,
             greetingScreenVisible = greetingScreenVisible,
-            focusRequester = focusRequester,
+            //focusRequester = focusRequester,
             actionDrawerOffsetY = actionDrawerOffsetY,
             intOffset = IntOffset(0, actionDrawerAnimatedOffsetY.roundToInt()),
             actionDrawerState = actionDrawerState,

@@ -43,11 +43,11 @@ fun CardsScreen(
     modifier: Modifier,
     //focusRequester: FocusRequester
 ) {
-    val focusRequester = remember { FocusRequester() }
+    //val focusRequester = remember { FocusRequester() }
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+        //focusRequester.requestFocus()
     }
 
     var scalingLazyColumnModifier = modifier
@@ -65,8 +65,8 @@ fun CardsScreen(
                 }
                 true
             }*/
-            .focusRequester(focusRequester)
-            .focusable()
+            //.focusRequester(focusRequester)
+            //.focusable()
     )
 
     ScalingLazyColumn(

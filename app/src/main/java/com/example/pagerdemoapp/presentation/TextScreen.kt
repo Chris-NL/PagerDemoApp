@@ -42,11 +42,11 @@ fun TextScreen(
     modifier: Modifier,
     //focusRequester: FocusRequester
 ) {
-    val focusRequester = remember { FocusRequester() }
+    //val focusRequester = remember { FocusRequester() }
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+        //focusRequester.requestFocus()
     }
 
     var scalingLazyColumnModifier = modifier
@@ -64,8 +64,8 @@ fun TextScreen(
                 }
                 true
             }*/
-            .focusRequester(focusRequester)
-            .focusable()
+            //.focusRequester(focusRequester)
+            //.focusable()
     )
 
     ScalingLazyColumn(

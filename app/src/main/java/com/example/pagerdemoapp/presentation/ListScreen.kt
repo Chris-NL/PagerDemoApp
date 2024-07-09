@@ -45,19 +45,19 @@ import androidx.wear.compose.material.TitleCard
 fun ListScreen(
     scalingLazyListState: ScalingLazyListState,
 ) {
-    val focusRequester = remember { FocusRequester() }
+    //val focusRequester = remember { FocusRequester() }
     var showDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+        //focusRequester.requestFocus()
     }
 
     ScalingLazyColumn(
         state = scalingLazyListState,
         modifier = Modifier
             .fillMaxSize()
-            .focusRequester(focusRequester)
-            .focusable()
+            //.focusRequester(focusRequester)
+            //.focusable()
     ) {
         item {
             Text(text = "Header")

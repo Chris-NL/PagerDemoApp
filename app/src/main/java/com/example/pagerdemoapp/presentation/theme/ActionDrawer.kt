@@ -56,7 +56,7 @@ import kotlinx.coroutines.launch
 fun ActionDrawer(
     scalingLazyListState: ScalingLazyListState,
     greetingScreenVisible: MutableState<Boolean>,
-    focusRequester: FocusRequester,
+    //focusRequester: FocusRequester,
     actionDrawerOffsetY: MutableState<Float>,
     intOffset: IntOffset,
     actionDrawerState: MutableState<Int>,
@@ -76,7 +76,7 @@ fun ActionDrawer(
     LaunchedEffect(key1 = actionDrawerDirection) {
         Log.d("ActionDrawer", "LaunchedEffect actionDrawerDirection: $actionDrawerDirection")
         if (actionDrawerDirection == 2) {
-            focusRequester.requestFocus()
+            //focusRequester.requestFocus()
             Log.d("ActionDrawer", "Starting countdown")
             countDownTimer = 5
             while (countDownTimer > 0) {
@@ -154,9 +154,9 @@ fun ActionDrawer(
                     }
                 }
             }
-            .background(Color(0xFF1F1D1D))
-            .focusRequester(focusRequester)
-            .focusable(),
+            .background(Color(0xFF1F1D1D)),
+            //.focusRequester(focusRequester)
+            //.focusable(),
         userScrollEnabled = userScrollEnabled
     ) {
         item {
@@ -310,5 +310,5 @@ fun ActionDrawer(
 @WearPreviewSquare
 @Composable
 fun ActionDrawerPreview() {
-    ActionDrawer(ScalingLazyListState(), greetingScreenVisible = remember { mutableStateOf(false) }, focusRequester = remember { FocusRequester() }, actionDrawerOffsetY = remember { mutableFloatStateOf(0f) }, intOffset = IntOffset(0, 0), actionDrawerState = remember { mutableIntStateOf(2) })
+    ActionDrawer(ScalingLazyListState(), greetingScreenVisible = remember { mutableStateOf(false) }, /*focusRequester = remember { FocusRequester() },*/ actionDrawerOffsetY = remember { mutableFloatStateOf(0f) }, intOffset = IntOffset(0, 0), actionDrawerState = remember { mutableIntStateOf(2) })
 }
