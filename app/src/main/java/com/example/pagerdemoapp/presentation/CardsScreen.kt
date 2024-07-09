@@ -59,12 +59,12 @@ fun CardsScreen(
     scalingLazyColumnModifier = scalingLazyColumnModifier.then(
         Modifier
             .background(Color.Black)
-            .onRotaryScrollEvent {
+            /*.onRotaryScrollEvent {
                 coroutineScope.launch {
                     scalingLazyListState.scrollBy(it.verticalScrollPixels)
                 }
                 true
-            }
+            }*/
             .focusRequester(focusRequester)
             .focusable()
     )
