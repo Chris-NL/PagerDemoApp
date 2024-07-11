@@ -50,6 +50,8 @@ import androidx.navigation.NavOptions
 import androidx.wear.compose.foundation.AnchorType
 import androidx.wear.compose.foundation.CurvedDirection
 import androidx.wear.compose.foundation.CurvedLayout
+import androidx.wear.compose.foundation.ExperimentalWearFoundationApi
+import androidx.wear.compose.foundation.HierarchicalFocusCoordinator
 import androidx.wear.compose.foundation.curvedBox
 import androidx.wear.compose.foundation.curvedComposable
 import androidx.wear.compose.foundation.curvedRow
@@ -62,6 +64,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalWearFoundationApi::class)
 @Composable
 fun PagerScreen(
     myViewModel: MyViewModel,
@@ -213,54 +216,56 @@ fun PagerScreen(
             ),
             userScrollEnabled = allowPaging
         ) { page ->
-            when (page) {
-                0 -> {
-                    GreetingScreen(
-                        modifier = Modifier,
-                        scalingLazyListState = myViewModel.greetingScreenScalingLazyListState,
-                        //focusRequester = myViewModel.greetingFocusRequester,
-                        greetingName = "Android",
-                        actionDrawerState = actionDrawerState,
-                        greetingScreenVisible = greetingScreenVisible,
-                        onScreenNavigated = { route: String?, navOptions: NavOptions? ->
-                            swipeDismissableNavController.navigate(
-                                route!!,
-                                navOptions = navOptions
-                            )
-                        }
-                    )
-                }
+            HierarchicalFocusCoordinator(requiresFocus = { pagerState.currentPage == page }) {
+                when (page) {
+                    0 -> {
+                        GreetingScreen(
+                            modifier = Modifier,
+                            scalingLazyListState = myViewModel.greetingScreenScalingLazyListState,
+                            //focusRequester = myViewModel.greetingFocusRequester,
+                            greetingName = "Android",
+                            actionDrawerState = actionDrawerState,
+                            greetingScreenVisible = greetingScreenVisible,
+                            onScreenNavigated = { route: String?, navOptions: NavOptions? ->
+                                swipeDismissableNavController.navigate(
+                                    route!!,
+                                    navOptions = navOptions
+                                )
+                            }
+                        )
+                    }
 
-                1 -> {
-                    CardsScreen(
-                        modifier = Modifier,
-                        scalingLazyListState = myViewModel.cardScreenScalingLazyListState,
-                        //focusRequester = myViewModel.cardFocusRequester
-                    )
-                }
+                    1 -> {
+                        CardsScreen(
+                            modifier = Modifier,
+                            scalingLazyListState = myViewModel.cardScreenScalingLazyListState,
+                            //focusRequester = myViewModel.cardFocusRequester
+                        )
+                    }
 
-                2 -> {
-                    ChipScreen(
-                        modifier = Modifier,
-                        scalingLazyListState = myViewModel.chipScreenScalingLazyListState,
-                        //focusRequester = myViewModel.chipFocusRequester
-                    )
-                }
+                    2 -> {
+                        ChipScreen(
+                            modifier = Modifier,
+                            scalingLazyListState = myViewModel.chipScreenScalingLazyListState,
+                            //focusRequester = myViewModel.chipFocusRequester
+                        )
+                    }
 
-                3 -> {
-                    TextScreen(
-                        modifier = Modifier,
-                        scalingLazyListState = myViewModel.textScreenScalingLazyListState,
-                        //focusRequester = myViewModel.textFocusRequester
-                    )
-                }
+                    3 -> {
+                        TextScreen(
+                            modifier = Modifier,
+                            scalingLazyListState = myViewModel.textScreenScalingLazyListState,
+                            //focusRequester = myViewModel.textFocusRequester
+                        )
+                    }
 
-                4 -> {
-                    SettingsScreen(
-                        modifier = Modifier,
-                        scalingLazyListState = myViewModel.settingsScreenScalingLazyListState,
-                        //focusRequester = myViewModel.settingsFocusRequester
-                    )
+                    4 -> {
+                        SettingsScreen(
+                            modifier = Modifier,
+                            scalingLazyListState = myViewModel.settingsScreenScalingLazyListState,
+                            //focusRequester = myViewModel.settingsFocusRequester
+                        )
+                    }
                 }
             }
         }
